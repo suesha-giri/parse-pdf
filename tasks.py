@@ -11,7 +11,7 @@ from models import (
 )
 
         
-# @celery.task()
+@celery.task()
 def parse_pdf(pdf_id, result_path):
     """
     Background task to parse a PDF file, extract the first table, and save it as a CSV file.
@@ -25,8 +25,6 @@ def parse_pdf(pdf_id, result_path):
     """
     pdf_file = FileUpload.query.filter_by(id=pdf_id).first()
     filename = pdf_file.filename.split('.')[0]
-    import pdb;
-    pdb.set_trace()
 
     try:
         # Open the PDF file using pdfplumber

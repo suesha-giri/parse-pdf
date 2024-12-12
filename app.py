@@ -78,7 +78,7 @@ def upload_pdf():
 
     from tasks import parse_pdf
     # Start the background task to parse the PDF
-    parse_pdf(unique_id, result_path)
+    parse_pdf.apply_async(args=[unique_id, result_path])
 
     return successs_response(
         "File uploaded successfully",
