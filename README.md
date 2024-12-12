@@ -36,11 +36,15 @@ docker-compose build
 ```bash
 docker-compose up
 ```
-### Step 4: Access the Application
+### Step 4: Run Database Migrations
+```bash
+docker exec -it parse-pdf_web_1 bash -c "flask db upgrade"
+```
+### Step 5: Access the Application
 ```bash
 http://localhost:5000
 ```
-### Step 5:  Test the Endpoints
+### Step 6:  Test the Endpoints
 #### Endpoint 1: /upload_pdf
 This endpoint will accept a PDF file, generate a unique identifier for the file, and send it for background processing. The PDF will be processed asynchronously by Celery.
 
